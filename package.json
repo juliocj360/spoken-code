@@ -1,12 +1,12 @@
 {
-  "name": "SpokenCode",
+  "name": "Sgit addpokenCode",
   "main": "./lib/spoken-code",
-  "version": "0.0.0",
-  "description": "A short description of your package",
+  "version": "1.0.0",
+  "description": "An IDE plugin for developers who would like the code read to them, out loud.",
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "spoken-code:toggle"
+    "atom-workspace": "Spoken Code:toggle"
   },
   "repository": "https://github.com/juliocj360/SpokenCode",
   "license": "MIT",
