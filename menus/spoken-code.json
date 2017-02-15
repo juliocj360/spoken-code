@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle Spoken Code",
+        "command": "Spoken Code:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "Spoken Code",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "Spoken Code:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
