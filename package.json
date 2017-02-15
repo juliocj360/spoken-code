@@ -12,5 +12,8 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "watson-developer-cloud": "^2.18.0",
+    "watson-speech": "^0.32.1"
+  }
 }
