@@ -1,13 +1,25 @@
-const config = {
+const apiInfo = {
   url: "https://stream.watsonplatform.net/text-to-speech/api"
 }
 
-config.username = atom.config.get('spoken-code.userName', (newValue) => {
-  return newValue
+atom.config.observe('spoken-code.userName', (newValue) => {
+  if (newValue.length < 1) {
+    apiInfo.username = ' '
+  }
+  else {
+    apiInfo.username = newValue
+  }
 })
 
-config.password = atom.config.get('spoken-code.password', (newValue) => {
-  return newValue
+atom.config.observe('spoken-code.password', (newValue) => {
+  if (newValue.length < 1) {
+    apiInfo.password = ' '
+  }
+  else {
+    apiInfo.password = newValue
+  }
 })
 
-module.exports = config
+console.log(apiInfo)
+
+module.exports = apiInfo
