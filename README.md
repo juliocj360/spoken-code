@@ -1,6 +1,6 @@
 Spoken Code
 
-https://atom.io/packages/spokencode
+https://atom.io/packages/spoken-code
 
 An IDE plugin for developers who would like their JavaScript code read to them, out loud.
 
