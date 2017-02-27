@@ -3,23 +3,11 @@ const apiInfo = {
 }
 
 atom.config.observe('spoken-code.userName', (newValue) => {
-  if (newValue.length < 1) {
-    apiInfo.username = ' '
-  }
-  else {
-    apiInfo.username = newValue
-  }
+  newValue.length < 1 ? apiInfo.username = ' ' : apiInfo.username = newValue
 })
 
 atom.config.observe('spoken-code.password', (newValue) => {
-  if (newValue.length < 1) {
-    apiInfo.password = ' '
-  }
-  else {
-    apiInfo.password = newValue
-  }
+  newValue.length < 1 ? apiInfo.password = ' ' : apiInfo.password = newValue
 })
-
-console.log(apiInfo)
 
 module.exports = apiInfo
