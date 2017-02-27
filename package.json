@@ -1,9 +1,11 @@
 {
   "name": "spoken-code",
   "main": "./lib/spoken-code",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "An IDE plugin for developers who would like the code read to them, out loud.",
-  "keywords": ["Atom"],
+  "keywords": [
+    "Atom"
+  ],
   "configSchema": {
     "userName": {
       "type": "string",
