@@ -1,7 +1,7 @@
 {
   "name": "spoken-code",
   "main": "./lib/spoken-code",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "An IDE plugin for developers who would like the code read to them, out loud.",
   "keywords": [
     "Atom"
