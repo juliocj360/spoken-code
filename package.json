@@ -6,6 +6,19 @@
   "keywords": [
     "Atom"
   ],
+  "configSchema": {
+    "userName": {
+      "type": "string",
+      "description": "Please sign up for IBM's Bluemix Text-to-Speech API [here](https://console.ng.bluemix.net/catalog/services/text-to-speech/) and enter the details below.",
+      "default": "",
+      "order": 1
+    },
+    "password": {
+      "type": "string",
+      "default": "",
+      "order": 2
+    }
+  },
   "repository": "https://github.com/juliocj360/spoken-code",
   "license": "MIT",
   "engines": {
