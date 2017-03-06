@@ -2,7 +2,7 @@
   "name": "spoken-code",
   "main": "./lib/spoken-code",
   "version": "1.3.7",
-  "description": "An IDE plugin for developers who would like the code read to them, out loud.",
+  "description": "An IDE plugin for developers who would like their JavaScript code read to them, out loud.",
   "keywords": [
     "Atom"
   ],
@@ -19,6 +19,11 @@
       "order": 2
     }
   },
+  "scripts": {
+    "tdd": "mocha -w -R nyan",
+    "test:nyc": "nyc tap ./test/*.js",
+    "test": "nyc --reporter=lcov --reporter=text-lcov mocha"
+  },
   "repository": "https://github.com/juliocj360/spoken-code",
   "license": "MIT",
   "engines": {
@@ -28,5 +33,11 @@
     "esprima": "^3.1.3",
     "watson-developer-cloud": "^2.18.0",
     "watson-speech": "^0.32.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "codecov": "^1.0.1",
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2"
   }
 }
