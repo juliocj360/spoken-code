@@ -95,145 +95,145 @@ const testExpression = [
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator <= ',
     exp: 'i <= 0',
     res: 'Comparison Expression testing if identifier "i"is less than or equal to number value of "0"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator >= ',
     exp: 'i >= 0 ',
     res: 'Comparison Expression testing if identifier "i"is greater than or equal to number value of "0"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator == ',
     exp: 'i == 0',
     res: 'Comparison Expression testing if identifier "i"equality number value of "0"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator === ',
     exp: 'i === 0',
     res: 'Comparison Expression testing if identifier "i"strict equality number value of "0"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator != ',
     exp: 'i != 0',
     res: 'Comparison Expression testing if identifier "i"inequality number value of "0"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator -- ',
     exp: 'i--',
     res: 'to decrement identifier "i"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator + ',
     exp: 'i + 1',
     res: 'identifier "i" plus number value of "1"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator - ',
     exp: 'i - 1',
     res: 'identifier "i" minus number value of "1"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator * ',
     exp: 'i * 2',
     res: 'identifier "i" multiply by number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator / ',
     exp: 'i / 2',
     res: 'identifier "i" divide by number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator % ',
     exp: 'i % 2',
     res: 'identifier "i" remainder of number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator ** ',
     exp: 'i ** 2',
     res: 'identifier "i" exponentiation by number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator = ',
     exp: 'i = 1',
     res: 'Assignment of identifier "i" to number value of "1"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator -= ',
     exp: 'i -= 1',
     res: 'Subtraction Assignment of identifier "i" minus equals number value of "1"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator *= ',
     exp: 'i *= 2',
     res: 'Multiplication Assignment of identifier "i" multiply equals number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator /= ',
     exp: 'i /= 2',
     res: 'Division Assignment of identifier "i" divide equals number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator %= ',
     exp: 'i %= 2',
     res: 'Remainder Assignment of identifier "i" remainder equals number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator **= ',
     exp: 'i **= 2',
     res: 'Exponentiation Assignment of identifier "i" exponentiation equals number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator <<= ',
     exp: 'i <<= 2',
     res: 'Left shift Assignment of identifier "i" to number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator >>= ',
     exp: 'i >>= 2',
     res: 'Right shift Assignment of identifier "i" to number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator >>>= ',
     exp: 'i >>>= 2',
     res: 'Unsigned right shift Assignment of identifier "i" to number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator &= ',
     exp: 'i &= 2',
     res: 'Bitwise AND Assignment of identifier "i" to number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator ^= ',
     exp: 'i ^= 2',
     res: 'Bitwise XOR Assignment of identifier "i" to number value of "2"'
   },
   {
     desc: 'Operator analyzer',
-    should: 'It should correcly analyze operator',
+    should: 'It should correcly analyze operator |= ',
     exp: 'i |= 2',
     res: 'Bitwise OR Assignment of identifier "i" to number value of "2"'
   },
