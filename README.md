@@ -1,5 +1,7 @@
 # Spoken Code
 
+![Build Status](https://travis-ci.org/juliocj360/spoken-code.svg?branch=master)
+
 https://atom.io/packages/spoken-code
 
 An IDE plugin for developers who would like their JavaScript code read to them, out loud.
