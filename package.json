@@ -6,19 +6,6 @@
   "keywords": [
     "Atom"
   ],
-  "configSchema": {
-    "userName": {
-      "type": "string",
-      "description": "Please sign up for IBM's Bluemix Text-to-Speech API [here](https://console.ng.bluemix.net/catalog/services/text-to-speech/) and enter the details below.",
-      "default": "",
-      "order": 1
-    },
-    "password": {
-      "type": "string",
-      "default": "",
-      "order": 2
-    }
-  },
   "scripts": {
     "tdd": "mocha -w -R nyan",
     "test:nyc": "nyc tap ./test/*.js",
@@ -30,9 +17,7 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "esprima": "^3.1.3",
-    "watson-developer-cloud": "^2.18.0",
-    "watson-speech": "^0.32.1"
+    "esprima": "^3.1.3"
   },
   "devDependencies": {
     "chai": "^3.5.0",
