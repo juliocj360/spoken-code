@@ -266,19 +266,13 @@ const testExpression = [
     should: 'It should correctly analyze a call expression with zero arguments',
     exp: 'let tester = test()',
     res: 'Call of the "test" function, passing 0 arguments and assigning the return value to the let variable named "tester". ',
-  }/*,
-  {
-    desc: '',
-    should: 'It should correctly analyze',
-    exp: '',
-    res: '',
   },
   {
-    desc: '',
-    should: 'It should correctly analyze',
-    exp: '',
-    res: '',
-  }*/
+    desc: 'Immediately invoked function expression',
+    should: 'It should correctly analyze an immediately invoked function expression',
+    exp: '(function counter() {})()',
+    res: 'Immediately invoking the following: Declaring "function named counter" and passing 0 parameters.  The Body consists of the following. Empty Block Statement ',
+  }
 ]
 
 for (var i = 0; i < testExpression.length; i++) {
