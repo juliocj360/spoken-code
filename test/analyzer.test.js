@@ -272,6 +272,12 @@ const testExpression = [
     should: 'It should correctly analyze an immediately invoked function expression',
     exp: '(function counter() {})()',
     res: 'Immediately invoking the following: Declaring "function named counter" and passing 0 parameters.  The Body consists of the following. Empty Block Statement ',
+  },
+  {
+    desc: 'Conditional expression',
+    should: 'It should correctly analyze a Conditional Expression ',
+    exp: 'isMember ? "$2.00" : "$10.00"',
+    res: 'Conditional expression evaluating identifier "isMember". If the condition is true the following is returned, string value of "$2.00". If the condition is false the following is returned, string value of "$10.00".'
   }
 ]
 
