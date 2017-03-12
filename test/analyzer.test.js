@@ -287,7 +287,7 @@ const testExpression = [
   }
 ]
 
-for (var i = 0; i < testExpression.length; i++) {
+for (let i = 0; i < testExpression.length; i++) {
   let test = testExpression[i]
   describe(test.desc, () => {
     it(test.should, () => {
