@@ -284,7 +284,25 @@ const testExpression = [
     should: 'It should correctly analyze a "this" expression',
     exp: 'this.type',
     res: '"type" property of the "this" object. '
-  }
+  },
+	{
+		desc: 'This expression II',
+		should: 'It should correctly analyze a "this" expression',
+		exp: 'this.type(this)',
+		res: 'Call of the "type" method on the "This" object and passing 1 arguments. Argument 1 is the "this". '
+	},
+	{
+		desc: 'This expression III',
+		should: 'It should correctly analyze a "this" expression',
+		exp: 'this()',
+		res: 'Call of the "This" function and passing 0 arguments. '
+	},
+	{
+		desc: 'This expression IIII',
+		should: 'It should correctly analyze a "this" expression',
+		exp: 'this.test.a.b()',
+		res: 'Call of the "b" method on the "a" property of the "test" property of the "this" object and passing 0 arguments. '
+	}
 ]
 
 for (let i = 0; i < testExpression.length; i++) {
