@@ -302,6 +302,18 @@ const testExpression = [
 		should: 'It should correctly analyze a "this" expression',
 		exp: 'this.test.a.b()',
 		res: 'Call of the "b" method on the "a" property of the "test" property of the "this" object and passing 0 arguments. '
+	},
+	{
+		desc: 'Template Literals',
+		should: 'It should correctly analyze a templpate literal',
+		exp: '`${test1} hello ${test2}`',
+		res: 'Template Literal with 2 embedded expressions. Expression: identifier "test1"; String text: " hello "; Expression: identifier "test2"; '
+	},
+	{
+		desc: 'Template Literals II',
+		should: 'It should correctly analyze a templpate literal',
+		exp: '`${test1} hello`',
+		res: 'Template Literal with 1 embedded expressions. Expression: identifier "test1"; String text: " hello".'
 	}
 ]
 
