@@ -285,36 +285,48 @@ const testExpression = [
     exp: 'this.type',
     res: '"type" property of the "this" object. '
   },
-	{
-		desc: 'This expression II',
-		should: 'It should correctly analyze a "this" expression',
-		exp: 'this.type(this)',
-		res: 'Call of the "type" method on the "This" object and passing 1 arguments. Argument 1 is the "this". '
-	},
-	{
-		desc: 'This expression III',
-		should: 'It should correctly analyze a "this" expression',
-		exp: 'this()',
-		res: 'Call of the "This" function and passing 0 arguments. '
-	},
-	{
-		desc: 'This expression IIII',
-		should: 'It should correctly analyze a "this" expression',
-		exp: 'this.test.a.b()',
-		res: 'Call of the "b" method on the "a" property of the "test" property of the "this" object and passing 0 arguments. '
-	},
-	{
-		desc: 'Template Literals',
-		should: 'It should correctly analyze a templpate literal',
-		exp: '`${test1} hello ${test2}`',
-		res: 'Template Literal with 2 embedded expressions. Expression: identifier "test1"; String text: " hello "; Expression: identifier "test2"; '
-	},
-	{
-		desc: 'Template Literals II',
-		should: 'It should correctly analyze a templpate literal',
-		exp: '`${test1} hello`',
-		res: 'Template Literal with 1 embedded expressions. Expression: identifier "test1"; String text: " hello".'
-	}
+  {
+    desc: 'This expression II',
+    should: 'It should correctly analyze a "this" expression',
+    exp: 'this.type(this)',
+    res: 'Call of the "type" method on the "This" object and passing 1 arguments. Argument 1 is the "this". '
+  },
+  {
+    desc: 'This expression III',
+    should: 'It should correctly analyze a "this" expression',
+    exp: 'this()',
+    res: 'Call of the "This" function and passing 0 arguments. '
+  },
+  {
+    desc: 'This expression IIII',
+    should: 'It should correctly analyze a "this" expression',
+    exp: 'this.test.a.b()',
+    res: 'Call of the "b" method on the "a" property of the "test" property of the "this" object and passing 0 arguments. '
+  },
+  {
+    desc: 'Template Literals',
+    should: 'It should correctly analyze a templpate literal',
+    exp: '`${test1} hello ${test2}`',
+    res: 'Template Literal with 2 embedded expressions. Expression: identifier "test1"; String text: " hello "; Expression: identifier "test2"; '
+  },
+  {
+    desc: 'Template Literals II',
+    should: 'It should correctly analyze a templpate literal',
+    exp: '`${test1} hello`',
+    res: 'Template Literal with 1 embedded expressions. Expression: identifier "test1"; String text: " hello".'
+  },
+  {
+    desc: 'While Statement',
+    should: 'It should correctly analyze a While Statement',
+    exp: 'while (n) {n++}',
+    res: '"While Statement" declaration that evaluates the following condition; identifier "n". While true, the following is executed; to increment identifier "n". '
+  },
+  {
+    desc: 'While Statement II',
+    should: 'It should correctly analyze a While Statement',
+    exp: 'const test = (n) => {while (n) {n++}}',
+    res: 'Declaring "an anonymous function", passing 1 parameters and assigning the return value to the constant variable named "test". Parameter 1 is the identifier "n".  The Body consists of the following. "While Statement" declaration that evaluates the following condition; identifier "n". While true, the following is executed; to increment identifier "n".  '
+  }
 ]
 
 for (let i = 0; i < testExpression.length; i++) {
