@@ -24,14 +24,14 @@ const testExpression = [
   {
     desc: 'Switch Statement analyzer',
     should: 'correctly analyze Switch Statement ',
-    exp: 'switch (expression) {default: console.log(expression)}',
-    res: 'Switch statement declaration evaluating identifier "expression" against 1 cases. Case number 1 is the default. if no match, the following will be executed: Call of the "log" method on the "console" object and passing 1 arguments. Argument 1 is the identifier "expression". ',
+    exp: 'switch (expression) {default: break}',
+    res: 'Switch statement declaration evaluating identifier "expression" against 1 cases. Case number 1 is the default. if no match, the following will be executed: "Break" statement',
   },
   {
     desc: 'Arrow Function with Switch case analyzer',
     should: 'correctly analyze Arrow function with switch in body',
     exp: 'var tester = (expression) => {switch (expression) {case "oranges": return expression}}',
-    res: 'Declaring "an anonymous function", passing 1 parameters and assigning the return value to the var variable named "tester". Parameter 1 is the identifier "expression".  The Body consists of the following. Switch statement declaration evaluating identifier "expression" against 1 cases. Case number 1 evaluates against string value of "oranges". If match, the following is executed: Return identifier "expression".  ',
+    res: 'Declaring "an anonymous function", passing 1 parameters and assigning the return value to the var variable named "tester". Parameter 1 is the identifier "expression".  The Body consists of the following. Switch statement declaration evaluating identifier "expression" against 1 cases. Case number 1 evaluates against string value of "oranges". If match, the following is executed: Return identifier "expression". .  ',
   },
   {
     desc: 'Block Statement analyzer',
