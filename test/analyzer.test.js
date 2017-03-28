@@ -326,6 +326,18 @@ const testExpression = [
     should: 'It should correctly analyze a While Statement',
     exp: 'const test = (n) => {while (n) {n++}}',
     res: 'Declaring "an anonymous function", passing 1 parameters and assigning the return value to the constant variable named "test". Parameter 1 is the identifier "n".  The Body consists of the following. "While Statement" declaration that evaluates the following condition; identifier "n". While true, the following is executed; to increment identifier "n".  '
+  },
+  {
+    desc: 'New Expression',
+    should: 'It should correctly analyze a New Expression',
+    exp: 'const test = new Date(test)',
+    res: 'Creating new instance of an object with the following constructor function: Date and passing 1 arguments; Argument 1 is the identifier "test". .  The "New" expression is assigned to constant variable named "test". '
+  },
+  {
+    desc: 'New Expression II',
+    should: 'It should correctly analyze a New Expression',
+    exp: 'new "Date"',
+    res: 'Creating new instance of an object with the following constructor function: string value of "Date". '
   }
 ]
 
