@@ -338,6 +338,12 @@ const testExpression = [
     should: 'It should correctly analyze a New Expression',
     exp: 'new "Date"',
     res: 'Creating new instance of an object with the following constructor function: string value of "Date". '
+  },
+  {
+    desc: 'typeof expression',
+    should: 'It should correctly analyze a typeof Expression',
+    exp: 'typeof 12',
+    res: '"Type of" expression that returns string indicating type of following:  number value of "12"'
   }
 ]
 
