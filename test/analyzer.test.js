@@ -344,6 +344,12 @@ const testExpression = [
     should: 'It should correctly analyze a typeof Expression',
     exp: 'typeof 12',
     res: '"Type of" expression that returns string indicating type of following:  number value of "12"'
+  },
+  {
+    desc: 'Delete operator',
+    should: 'It should correctly analyze a delete expression',
+    exp: 'delete test.hello',
+    res: 'Delete "hello" property of the "test" object. '
   }
 ]
 
