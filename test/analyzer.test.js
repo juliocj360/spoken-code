@@ -342,8 +342,8 @@ const testExpression = [
   {
     desc: 'typeof expression',
     should: 'It should correctly analyze a typeof Expression',
-    exp: 'typeof 12',
-    res: '"Type of" expression for following:  number value of "12"'
+    exp: 'typeof test()',
+    res: '"Type of" expression for following:  Call of the "test" function, passing 0 arguments . '
   },
   {
     desc: 'Delete operator',
