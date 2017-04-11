@@ -350,6 +350,24 @@ const testExpression = [
     should: 'It should correctly analyze a delete expression',
     exp: 'delete test.hello',
     res: 'Delete "hello" property of the "test" object. '
+  },
+  {
+    desc: 'Logical operator expression !',
+    should: 'It should correctly analyze a logical not expression ',
+    exp: '!test',
+    res: 'Logical not operator on following: identifier "test"'
+  },
+  {
+    desc: 'Logical operator expression &&',
+    should: 'It should correctly analyze a logical AND expression',
+    exp: 'varA && varB',
+    res: 'Logical AND Expression on following expressions: Expression 1 is identifier "varA". Expression 2 is identifier "varB". '
+  },
+  {
+    desc: 'Logical operator expression ||',
+    should: 'It should correctly analyze a logical OR expression ',
+    exp: 'varA || varB',
+    res: 'Logical OR Expression on following expressions: Expression 1 is  identifier "varA". Expression 2 is identifier "varB". '
   }
 ]
 
