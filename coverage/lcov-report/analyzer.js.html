@@ -1,0 +1,2105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for analyzer.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="prettify.css" />
+    <link rel="stylesheet" href="base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="index.html">All files</a> analyzer.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>467/467</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">96.97% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>192/198</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>29/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>467/467</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">152x</span>
+<span class="cline-any cline-yes">152x</span>
+<span class="cline-any cline-yes">152x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">51x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-yes">55x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-yes">43x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">61x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const analyzer = (parsedArray) =&gt; {
+  for (var i = 0; i &lt; parsedArray.length; i++) {
+    const seperatedBody = parsedArray[i]
+    switch (seperatedBody.type) {
+      case 'VariableDeclaration':
+        return variableAnalyzer(seperatedBody)
+      case 'ExpressionStatement':
+        return expressionAnalyzer(seperatedBody)
+      case 'ForStatement':
+        return forStmtAnalyzer(seperatedBody)
+      case 'Identifier':
+        return idAnalyzer(seperatedBody)
+      case 'Literal':
+        return litAnalyzer(seperatedBody)
+      case 'BinaryExpression':
+        return binaryExpAnalyzer(seperatedBody)
+      case 'MemberExpression':
+        return memberExpAnalyzer(seperatedBody)
+      case 'UpdateExpression':
+        return updateExpAnalyzer(seperatedBody)
+      case 'AssignmentExpression':
+        return assignExpAnalyzer(seperatedBody)
+      case 'BlockStatement':
+        return blockStmtAnalyzer(seperatedBody.body)
+      case 'FunctionDeclaration':
+        return functionAnalyzer(seperatedBody)
+      case 'FunctionExpression':
+        return functionAnalyzer(seperatedBody)
+      case 'ReturnStatement':
+        return returnAnalyzer(seperatedBody.argument)
+      case 'ArrowFunctionExpression':
+        return arrowAnalyzer(seperatedBody)
+      case 'IfStatement':
+        return ifStmtAnalyzer(seperatedBody)
+      case 'SwitchStatement':
+        return switchAnalyzer(seperatedBody)
+      case 'ArrayExpression':
+        return arrayAnalyzer(seperatedBody)
+      case 'TemplateLiteral':
+        return templateLiteralAnalyzer(seperatedBody)
+      case 'ThisExpression':
+        return '"this"'
+      case 'WhileStatement':
+        return whileAnalyzer(seperatedBody)
+      case 'BreakStatement':
+        return '"Break" statement'
+      case 'NewExpression':
+        return newExpAnalyzer(seperatedBody)
+      case 'UnaryExpression':
+        return unaryExpAnalyzer(seperatedBody)
+      case 'CallExpression':
+        return `${callExpressionAnalyzer(seperatedBody).call}. ${callExpressionAnalyzer(seperatedBody).args}`
+      case 'LogicalExpression':
+        return logicalExpAnalyzer(seperatedBody)
+    }
+  }
+}
+&nbsp;
+const logicalExpAnalyzer = (expression) =&gt; {
+  if (expression.operator === '&amp;&amp;') {
+    return `Logical AND Expression on following expressions: Expression 1 is ${analyzer([expression.left])}. Expression 2 is ${analyzer([expression.right])}. `
+  }
+  else <span class="missing-if-branch" title="else path not taken" >E</span>if (expression.operator === '||') {
+    return `Logical OR Expression on following expressions: Expression 1 is  ${analyzer([expression.left])}. Expression 2 is ${analyzer([expression.right])}. `
+  }
+}
+&nbsp;
+const unaryExpAnalyzer = (expression) =&gt; {
+  const { operator } = expression
+  if (operator === 'typeof') {
+    return `"Type of" expression for following:  ${analyzer([expression.argument])}`
+  }
+  else if (operator === 'delete') {
+    return `Delete ${analyzer([expression.argument])}`
+  }
+  else <span class="missing-if-branch" title="else path not taken" >E</span>if (operator === '!') {
+    return `Logical not operator on following: ${analyzer([expression.argument])}`
+  }
+}
+&nbsp;
+const newExpAnalyzer = (expression) =&gt; {
+  const args = expression.arguments
+  let argString = ''
+  let constructorString = expression.callee.type === 'Identifier' ? expression.callee.name : analyzer([expression.callee])
+  if (args.length &gt; 0) {
+    argString = ` and passing ${args.length} arguments; ${argAnalyzer(args, 'Argument')}`
+  }
+  return `Creating new instance of an object with the following constructor function: ${constructorString}${argString}. `
+}
+&nbsp;
+const whileAnalyzer = (expression) =&gt; {
+  return `"While Statement" declaration that evaluates the following condition; ${analyzer([expression.test])}. While true, the following is executed; ${analyzer([expression.body])}. `
+}
+&nbsp;
+const templateLiteralAnalyzer = (expression) =&gt; {
+  const len = expression.quasis.length
+  const { quasis, expressions } = expression
+  const initString = `Template Literal with ${expressions.length} embedded expressions. `
+  let litString = [initString]
+  for (var i = 0; i &lt; len ; i++) {
+    if (i &lt; len - 1 ) {
+      let stringB
+      let expString = analyzer([expressions[i]])
+      let quasisString = quasis[i].value.raw
+      if (quasisString.replace(' ', '').length === 0) {
+        stringB = `Expression: ${expString}; `
+      }
+      else {
+        stringB = `String text: "${quasisString}"; Expression: ${expString}; `
+      }
+      litString.push(stringB)
+    }
+    else {
+      let varString
+      let stringA = quasis[i].value.raw
+      if (stringA.replace(' ', '').length &gt; 0) {
+        varString = `String text: "${stringA}".`
+      }
+      litString.push(varString)
+    }
+  }
+  return litString.join('')
+}
+&nbsp;
+const arrayAnalyzer = (expression) =&gt; {
+  let { elements } = expression
+  if (elements.length === 0) {
+    return 'empty array object'
+  }
+  let initString = `Array object with ${elements.length} elements. `
+  let elementsString = [initString]
+  for (var i = 0; i &lt; elements.length; i++) {
+    let elementCount = i + 1
+    let elString = analyzer([elements[i]])
+    let varString = `Element ${elementCount} is ${elString}. `
+    elementsString.push(varString)
+  }
+  return elementsString.toString()
+}
+&nbsp;
+const switchAnalyzer = (expression) =&gt; {
+  let evalExpression = analyzer([expression.discriminant])
+  let caseCount = expression.cases.length
+  let caseString = caseAnalyzer(expression.cases)
+  let switchString = `Switch statement declaration evaluating ${evalExpression} against ${caseCount} cases. ${caseString}`
+  return switchString
+}
+&nbsp;
+const caseAnalyzer = (array) =&gt; {
+  let stmtString = []
+  for (var i = 0; i &lt; array.length; i++) {
+    let caseCount = i + 1
+    let consequentString = analyzer(array[i].consequent)
+    if (array[i].test) {
+      let testCase = analyzer([array[i].test])
+      let caseString = `Case number ${caseCount} evaluates against ${testCase}. If match, the following is executed: ${consequentString}. `
+      stmtString.push(caseString)
+    }
+    else {
+      let defaultString = `Case number ${caseCount} is the default. if no match, the following will be executed: ${consequentString}`
+      stmtString.push(defaultString)
+    }
+  }
+  return stmtString.join('')
+}
+&nbsp;
+const ifStmtAnalyzer = (expression) =&gt; {
+  let testString = analyzer([expression.test])
+  let consequentString = analyzer([expression.consequent])
+  if (expression.alternate === null) {
+    let ifStmtString = `"If" statement declaration. Condition is ${testString}. If truthy, the following will be excuted. ${consequentString}`
+    return ifStmtString
+  }
+  else if (expression.alternate.type === 'IfStatement') {
+    let alternateString = analyzer([expression.alternate])
+    let ifStmtString = `"If" statement declaration. Condition is ${testString}. If truthy, the following will be excuted. ${consequentString} Alternative ${alternateString}`
+    return ifStmtString
+  }
+  else {
+    let altString = analyzer([expression.alternate])
+    let elseString = `"If" statement declaration. Condition is ${testString}. If truthy, the following will be excuted. ${consequentString} "Else" statement declaration. If no "If" statement is found to be truthy, the following will be excuted. ${altString}`
+    return elseString
+  }
+}
+&nbsp;
+const arrowAnalyzer = (expression) =&gt; {
+  let functionName, paramsStrings
+  functionName = 'an anonymous function'
+  let blockString = blockStmtAnalyzer(expression.body.body)
+  let paramNumber = expression.params.length
+  if (paramNumber &gt; 0) {
+    paramsStrings = argAnalyzer(expression.params, 'Parameter')
+  }
+  else {
+    paramsStrings = ''
+  }
+  let arrowString = `Declaring "${functionName}", passing ${paramNumber} parameters`
+  let bodyString = `The Body consists of the following. ${blockString}`
+  let arrowObj = {
+    arrowString, paramsStrings, bodyString
+  }
+  return arrowObj
+}
+&nbsp;
+const assignExpAnalyzer = (expression) =&gt; {
+  const analyzedOp = operatorAnalyzer(expression.operator)
+  const { type, desc } = analyzedOp
+  const { left, right } = expression
+  const leftString = analyzer([left])
+  const rightString = analyzer([right])
+  const expString = type + leftString + desc + rightString
+  return expString
+}
+&nbsp;
+const returnAnalyzer = (expression) =&gt; {
+  let expString = analyzer([expression])
+  let varString = `Return ${expString}. `
+  return varString
+}
+&nbsp;
+const functionAnalyzer = (expression) =&gt; {
+  let functionName, paramsStrings
+  expression.id ? functionName = 'function named ' + expression.id.name : functionName = 'anonymous function'
+  let blockString = blockStmtAnalyzer(expression.body.body)
+  let paramNumber = expression.params.length
+  if (paramNumber &gt; 0) {
+    paramsStrings = argAnalyzer(expression.params, 'Parameter')
+  }
+  else {
+    paramsStrings = ''
+  }
+  let functionString = `Declaring "${functionName}" and passing ${paramNumber} parameters. ${paramsStrings} The Body consists of the following. ${blockString}`
+  return functionString
+}
+&nbsp;
+const blockStmtAnalyzer = (array) =&gt; {
+  let blockStmtString = []
+  if (array.length &gt; 0) {
+    for (var i = 0; i &lt; array.length; i++) {
+      let analyzedString = analyzer([array[i]])
+      blockStmtString.push(analyzedString)
+    }
+  }
+  else {
+    let emptyStmtString = 'Empty Block Statement '
+    blockStmtString.push(emptyStmtString)
+  }
+  return blockStmtString.toString()
+}
+&nbsp;
+const forStmtAnalyzer = (seperatedBody) =&gt; {
+  const { init, test, update, body } = seperatedBody
+  let initString, testString, updateString, bodyString
+  init ? initString = analyzer([init]) : initString = 'null'
+  test ? testString = analyzer([test]) : testString = 'null'
+  update ? updateString = analyzer([update]) : updateString = 'null'
+  bodyString = analyzer([body])
+  let forString = `"For" loop declaration. The Initialization is ${initString} The Condition is a ${testString} The Final Expression is ${updateString}. The Body consists of the following. ${bodyString}`
+  return forString
+}
+&nbsp;
+const expressionAnalyzer = (seperatedBody) =&gt; {
+  const { expression } = seperatedBody
+  const { callee } = expression
+  if (expression.type === 'CallExpression' &amp;&amp; expression.callee.type === 'MemberExpression' ) {
+    const method = callee.property.name
+    let object
+    if (!callee.object.name) {
+      const memberArray = memberExpAnalyzer(callee.object)
+      object = ((memberArray === 'This') ? memberArray : memberArray.slice(1, -10))
+    }
+    else {
+      object = callee.object.name
+    }
+    const argString = argAnalyzer(expression.arguments, 'Argument')
+    const argCount = expression.arguments.length
+    const callString = `Call of the "${method}" method on the "${object}" object and passing ${argCount} arguments. `
+    const varString = callString + argString
+    return varString
+  }
+  else if (expression.type === 'MemberExpression') {
+    const memberExpString = memberExpAnalyzer(expression)
+    return memberExpString
+  }
+  else if (expression.type === 'BinaryExpression') {
+    const expString = binaryExpAnalyzer(expression)
+    return expString
+  }
+  else if (expression.type === 'UpdateExpression') {
+    const expString = updateExpAnalyzer(expression)
+    return expString
+  }
+  else if (expression.type === 'AssignmentExpression') {
+    const expString = analyzer([expression])
+    return expString
+  }
+  else if (expression.type === 'Identifier') {
+    const name = expression.name
+    const identifierString = `identifier "${name}"`
+    return identifierString
+  }
+  else if (expression.type === 'Literal') {
+    const value = expression.value
+    const type = typeof value
+    const identifierString = `${type} value of "${value}"`
+    return identifierString
+  }
+  else if (expression.type === 'CallExpression' &amp;&amp; expression.callee.type === 'Identifier') {
+    const name = callee.name
+    const argCount = expression.arguments.length
+    const argString = argAnalyzer(expression.arguments, 'Argument')
+    const callString = `Call of the \"${name}\" function and passing ${argCount} arguments. `
+    const varString = callString + argString
+    return varString
+  }
+	else if (expression.type === 'CallExpression' &amp;&amp; expression.callee.type === 'ThisExpression') {
+		const argCount = expression.arguments.length
+		const argString = argAnalyzer(expression.arguments, 'Argument')
+		const callString = `Call of the "This" function and passing ${argCount} arguments. `
+		const varString = callString + argString
+		return varString
+	}
+  else if (expression.type === 'CallExpression' &amp;&amp; expression.callee.type === 'FunctionExpression' ) {
+    const functionString = analyzer([expression.callee])
+    const varString = `Immediately invoking the following: ${functionString}`
+    return varString
+  }
+	else if (expression.type === 'TemplateLiteral' ) {
+		const templateLiteralString = analyzer([expression])
+		return templateLiteralString
+	}
+  else if (expression.type === 'ConditionalExpression') {
+    const testString = analyzer([expression.test])
+    const consequentString = analyzer([expression.consequent])
+    const altString = analyzer([expression.alternate])
+    const varString = `Conditional expression evaluating ${testString}. If the condition is true the following is returned, ${consequentString}. If the condition is false the following is returned, ${altString}.`
+    return varString
+  }
+  else if (expression.type === 'UnaryExpression') {
+    return analyzer([expression])
+  }
+  else {
+    let varString = analyzer([expression])
+    return varString
+  }
+}
+&nbsp;
+const updateExpAnalyzer = (expression) =&gt; {
+  const idString = idAnalyzer(expression.argument)
+  const analyzedOp = operatorAnalyzer(expression.operator)
+  const updateString = `${analyzedOp.desc} ${idString}`
+  return updateString
+}
+&nbsp;
+const memberExpAnalyzer = (expression) =&gt; {
+	if (expression.type === 'ThisExpression') {
+		return 'This'
+	}
+  const propName = expression.property.name
+  let obName
+  if (expression.object.type === 'ThisExpression') {
+    obName = '"this" object. '
+  }
+  else if (!expression.object.name) {
+    obName = memberExpAnalyzer(expression.object)
+  }
+  else {
+    obName = `"${expression.object.name}" object. `
+  }
+  const memberString = `"${propName}" property of the ${obName}`
+  return memberString
+}
+&nbsp;
+const binaryExpAnalyzer = (expression) =&gt; {
+  const analyzedOp = operatorAnalyzer(expression.operator)
+  const { type, desc } = analyzedOp
+  const { left, right } = expression
+  const leftString = analyzer([left])
+  const rightString = analyzer([right])
+  const expString = type + leftString + desc + rightString
+  return expString
+}
+&nbsp;
+const idAnalyzer = (expression) =&gt; {
+  const name = expression.name
+  const identifierString = `identifier "${name}"`
+  return identifierString
+}
+&nbsp;
+const litAnalyzer = (expression) =&gt; {
+  const value = expression.value
+  const type = typeof value
+  const identifierString = `${type} value of "${value}"`
+  return identifierString
+}
+&nbsp;
+const callExpressionAnalyzer = (expression) =&gt; {
+  const { callee } = expression
+  const argCount = expression.arguments.length
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (callee.type === 'Identifier') {
+    const name = callee.name
+    const callString = `Call of the "${name}" function, passing ${argCount} arguments `
+    const argString = argAnalyzer(expression.arguments, 'Argument')
+    const varString = { call: callString, args: argString }
+    return varString
+  }
+}
+&nbsp;
+const argAnalyzer = (array, type) =&gt; {
+  let argArray = []
+  if (array.length &gt; 0) {
+    for (var i = 0; i &lt; array.length; i++) {
+      const argNumber = i + 1
+      if (array[i].type === 'ArrowFunctionExpression') {
+        let paramsStrings = ''
+        let paramNumber = array[i].params.length
+        let blockString = blockStmtAnalyzer(array[i].body.body)
+        let bodyString = `The anonymous function's body consists of the following. ${blockString}`
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (paramNumber &gt;= 1) {
+          paramsStrings = argAnalyzer(array[i].params, 'Parameter')
+        }
+        let varString = `${type} ${argNumber} is an anonymous function with ${paramNumber} parameters. ${paramsStrings} ${bodyString}`
+        argArray.push(varString)
+      }
+      else {
+        const argString = analyzer([array[i]])
+        const varString = `${type} ${argNumber} is the ${argString}. `
+        argArray.push(varString)
+      }
+    }
+    return argArray.join('')
+  }
+  else {
+    argArray = ''
+    return argArray
+  }
+}
+&nbsp;
+const variableAnalyzer = (seperatedBody) =&gt; {
+  const kindOfVariable = (seperatedBody.kind === 'const') ? 'constant' : seperatedBody.kind
+  for (var j = 0; j &lt; seperatedBody.declarations.length; j++) {
+    const declaration = seperatedBody.declarations[j]
+    if (declaration.type === 'VariableDeclarator' &amp;&amp; (!declaration.init)) {
+      let name = declaration.id.name
+      let varString = `${kindOfVariable} variable named "${name}" declared.`
+      return varString
+    }
+    else if (declaration.type === 'VariableDeclarator' &amp;&amp; declaration.init.type === 'ObjectExpression') {
+      const name = declaration.id.name
+      const propertyCount = declaration.init.properties.length
+      const obString = ` Object initializer with ${propertyCount} properties assigned to ${kindOfVariable} variable named "${name}". `
+      const propString = propertiesAnalyzer(declaration.init.properties)
+      const varString = obString + propString.toString()
+      return varString
+    }
+    else if (declaration.type === 'VariableDeclarator' &amp;&amp; declaration.init.type === 'CallExpression') {
+      const callString = callExpressionAnalyzer(declaration.init)
+      const name = declaration.id.name
+      const varString = `${callString.call}and assigning the return value to the ${kindOfVariable} variable named "${name}". `
+      let expString
+      callString.args ? expString = varString + callString.args : expString = varString
+      return expString
+    }
+    else if (declaration.type === 'VariableDeclarator' &amp;&amp; declaration.init.type === 'ArrowFunctionExpression') {
+      const name = declaration.id.name
+      let arrowObj = analyzer([declaration.init])
+      let {arrowString, paramsStrings, bodyString} = arrowObj
+      let varString = `${arrowString} and assigning the return value to the ${kindOfVariable} variable named "${name}". ${paramsStrings} ${bodyString} `
+      return varString
+    }
+    else if (declaration.type === 'VariableDeclarator' &amp;&amp; declaration.init.type === 'ArrayExpression') {
+      let name = declaration.id.name
+      if (declaration.init.elements.length === 0) {
+        return `Empty array object assigned to the ${kindOfVariable} variable named "${name}".`
+      }
+      let arrayString = analyzer([declaration.init])
+      let varString = `${arrayString} The array object is assigned to the ${kindOfVariable} variable named "${name}".`
+      return varString
+    }
+    else if (declaration.type === 'VariableDeclarator' &amp;&amp; declaration.init.type === 'NewExpression') {
+      const name = declaration.id.name
+      const newString = analyzer([declaration.init])
+      const varString = `${newString} The "New" expression is assigned to ${kindOfVariable} variable named "${name}". `
+      return varString
+    }
+    else <span class="missing-if-branch" title="else path not taken" >E</span>if (declaration.type === 'VariableDeclarator') {
+      const varString = varDeclarator(declaration, kindOfVariable)
+      return varString
+    }
+  }
+}
+&nbsp;
+const varDeclarator = (declaration, kindOfVariable) =&gt; {
+  const name = declaration.id.name
+  const value = declaration.init.value
+  const type = typeof value
+  const varString = `${type} value of ${value} assigned to ${kindOfVariable} variable named "${name}". `
+  return varString
+}
+&nbsp;
+const propertiesAnalyzer = (array) =&gt; {
+  let propString = []
+  for (var i = 0; i &lt; array.length; i++) {
+    if (!array[i].method) {
+      const value = array[i].value.value
+      const valueType = typeof value
+      const key = array[i].key.name
+      const propNumber = i + 1
+      const varString = `Property ${propNumber} is a key value pair where the ${valueType} value of "${value}" is assigned to the key "${key}". `
+      propString.push(varString)
+    }
+    else {
+      const methodString = array[i].key.name + " is a method. "
+      propString.push(methodString)
+    }
+  }
+  return propString
+}
+&nbsp;
+const operatorAnalyzer = (operator) =&gt; {
+  let analyzedOp = {}
+  switch (operator) {
+    case '&lt;':
+      analyzedOp.desc = 'is less than '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '&gt;':
+      analyzedOp.desc = 'is greater than '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '&lt;=':
+      analyzedOp.desc = 'is less than or equal to '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '&gt;=':
+      analyzedOp.desc = 'is greater than or equal to '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '==':
+      analyzedOp.desc = 'equality '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '===':
+      analyzedOp.desc = 'strict equality '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '!=':
+      analyzedOp.desc = 'inequality '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '!==':
+      analyzedOp.desc = 'strict inequality '
+      analyzedOp.type = 'Comparison Expression testing if '
+      return analyzedOp
+    case '++':
+      analyzedOp.desc = 'to increment'
+      return analyzedOp
+    case '--':
+      analyzedOp.desc = 'to decrement'
+      return analyzedOp
+    case '+':
+      analyzedOp.desc = ' plus '
+      analyzedOp.type = ''
+      return analyzedOp
+    case '-':
+      analyzedOp.desc = ' minus '
+      analyzedOp.type = ''
+      return analyzedOp
+    case '*':
+      analyzedOp.desc = ' multiply by '
+      analyzedOp.type = ''
+      return analyzedOp
+    case '/':
+      analyzedOp.desc = ' divide by '
+      analyzedOp.type = ''
+      return analyzedOp
+    case '%':
+      analyzedOp.desc = ' remainder of '
+      analyzedOp.type = ''
+      return analyzedOp
+    case '**':
+      analyzedOp.desc = ' exponentiation by '
+      analyzedOp.type = ''
+      return analyzedOp
+    case '=':
+      analyzedOp.desc = ' to '
+      analyzedOp.type = 'Assignment of '
+      return analyzedOp
+    case '+=':
+      analyzedOp.desc = ' plus equals '
+      analyzedOp.type = 'Addition Assignment of '
+      return analyzedOp
+    case '-=':
+      analyzedOp.desc = ' minus equals '
+      analyzedOp.type = 'Subtraction Assignment of '
+      return analyzedOp
+    case '*=':
+      analyzedOp.desc = ' multiply equals '
+      analyzedOp.type = 'Multiplication Assignment of '
+      return analyzedOp
+    case '/=':
+      analyzedOp.desc = ' divide equals '
+      analyzedOp.type = 'Division Assignment of '
+      return analyzedOp
+    case '%=':
+      analyzedOp.desc = ' remainder equals '
+      analyzedOp.type = 'Remainder Assignment of '
+      return analyzedOp
+    case '**=':
+      analyzedOp.desc = ' exponentiation equals '
+      analyzedOp.type = 'Exponentiation Assignment of '
+      return analyzedOp
+    case '&lt;&lt;=':
+      analyzedOp.desc = ' to '
+      analyzedOp.type = 'Left shift Assignment of '
+      return analyzedOp
+    case '&gt;&gt;=':
+      analyzedOp.desc = ' to '
+      analyzedOp.type = 'Right shift Assignment of '
+      return analyzedOp
+    case '&gt;&gt;&gt;=':
+      analyzedOp.desc = ' to '
+      analyzedOp.type = 'Unsigned right shift Assignment of '
+      return analyzedOp
+    case '&amp;=':
+      analyzedOp.desc = ' to '
+      analyzedOp.type = 'Bitwise AND Assignment of '
+      return analyzedOp
+    case '^=':
+      analyzedOp.desc = ' to '
+      analyzedOp.type = 'Bitwise XOR Assignment of '
+      return analyzedOp
+    case '|=':
+      analyzedOp.desc = ' to '
+      analyzedOp.type = 'Bitwise OR Assignment of '
+      return analyzedOp
+  }
+}
+&nbsp;
+const pushAnalyzer = (parsedArray) =&gt; {
+  let textToBeRead = []
+  for (var i = 0; i &lt; parsedArray.length; i++) {
+    const seperatedBody = parsedArray[i]
+    if (seperatedBody.type === 'VariableDeclaration') {
+      let varString = variableAnalyzer(seperatedBody)
+      textToBeRead.push(varString)
+    }
+    else if (seperatedBody.type === 'ExpressionStatement') {
+      let expString = expressionAnalyzer(seperatedBody)
+      textToBeRead.push(expString)
+    }
+    else if (seperatedBody.type === 'ForStatement') {
+      let forStmtString = forStmtAnalyzer(seperatedBody)
+      textToBeRead.push(forStmtString)
+    }
+    else if (seperatedBody.type === 'BlockStatement') {
+      let blockStmtString = blockStmtAnalyzer(seperatedBody.body)
+      textToBeRead.push(blockStmtString)
+    }
+    else if (seperatedBody.type === 'FunctionDeclaration') {
+      let functionString = functionAnalyzer(seperatedBody)
+      textToBeRead.push(functionString)
+    }
+    else if (seperatedBody.type === 'IfStatement') {
+      let ifStmtString = ifStmtAnalyzer(seperatedBody)
+      textToBeRead.push(ifStmtString)
+    }
+    else if (seperatedBody.type === 'SwitchStatement') {
+      let switchStmtString = switchAnalyzer(seperatedBody)
+      textToBeRead.push(switchStmtString)
+    }
+    else <span class="missing-if-branch" title="else path not taken" >E</span>if (seperatedBody.type === 'WhileStatement') {
+      let whileString = whileAnalyzer(seperatedBody)
+      textToBeRead.push(whileString)
+    }
+  }
+  return textToBeRead
+}
+&nbsp;
+module.exports = pushAnalyzer
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Apr 10 2017 23:10:37 GMT-0700 (PDT)
+</div>
+</div>
+<script src="prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="sorter.js"></script>
+</body>
+</html>
