@@ -9,7 +9,8 @@
   "scripts": {
     "tdd": "mocha -w -R nyan",
     "test:nyc": "nyc tap ./test/*.js",
-    "test": "nyc --reporter=lcov --reporter=text-lcov mocha"
+    "test": "nyc --reporter=lcov --reporter=text-lcov mocha",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "repository": "https://github.com/juliocj360/spoken-code",
   "license": "MIT",
