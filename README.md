@@ -1,6 +1,6 @@
 # Spoken Code
 
-[![Build Status](https://travis-ci.org/juliocj360/spoken-code.svg?branch=master)](https://travis-ci.org/juliocj360/spoken-code)
+[![Build Status](https://travis-ci.org/juliocj360/spoken-code.svg?branch=master)](https://travis-ci.org/juliocj360/spoken-code) [![codecov](https://codecov.io/gh/juliocj360/spoken-code/branch/master/graph/badge.svg)](https://codecov.io/gh/juliocj360/spoken-code)
 
 https://atom.io/packages/spoken-code
 
