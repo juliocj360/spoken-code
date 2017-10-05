@@ -1,5 +1,7 @@
 # Spoken Code
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/juliocj360/spoken-code.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/juliocj360/spoken-code.svg?branch=master)](https://travis-ci.org/juliocj360/spoken-code) [![codecov](https://codecov.io/gh/juliocj360/spoken-code/branch/master/graph/badge.svg)](https://codecov.io/gh/juliocj360/spoken-code) [![dependencies Status](https://david-dm.org/juliocj360/spoken-code/status.svg)](https://david-dm.org/juliocj360/spoken-code) [![devDependencies Status](https://david-dm.org/juliocj360/spoken-code/dev-status.svg)](https://david-dm.org/juliocj360/spoken-code?type=dev)
 
 https://atom.io/packages/spoken-code
